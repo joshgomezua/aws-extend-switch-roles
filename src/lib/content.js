@@ -3,8 +3,7 @@ const autoAssumeLastRole = new AutoAssumeLastRole();
 function extendIAMFormList() {
   var csrf, list = elById('awsc-username-menu-recent-roles');
   if (list) {
-    var firstForm = list.querySelector('#awsc-recent-role-0 form');
-    csrf = firstForm['csrf'].value;
+    csrf = list.querySelector('input[name=csrf]').value
   } else {
     list = generateEmptyRoleList();
     csrf = '';
@@ -64,7 +63,7 @@ function replaceRedirectURI(form, profile) {
       }
     }
     form.redirect_uri.value = encodeURIComponent(redirectUri);
-  }  
+  }
 }
 
 function hookBeforeSwitch(form, profile) {
